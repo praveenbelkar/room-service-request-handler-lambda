@@ -1,0 +1,38 @@
+{
+  "name": "room-service-request-handler-lambda",
+  "version": "1.0.0",
+  "description": "API handler lambda for retrieving RoomInfo related information",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.12.1",
+    "npm": ">=9.2.0"
+  },
+  "scripts": {
+    "handlebars": "./node_modules/handlebars/bin/handlebars ./src/dtoSchema/template --extension 'hbs' -f ./src/dtoSchema/template/roomTemplate.js -c handlebars/runtime",
+    "build": "npm run handlebars",
+    "ci": "export NODE_ENV=ci",
+    "run:local": "export NODE_ENV=local && node-lambda run",
+    "run:dev": "export NODE_ENV=dev && node-lambda run",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "prod": "export NODE_ENV=prod "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "api-node-modules": "git+https://bitbucket.det.nsw.edu.au/scm/entint/api-node-modules.git#main",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "jest": "^29.4.3",
+    "node-lambda": "^1.2.0",
+    "prettier": "^2.8.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-lambda": "^3.341.0",
+    "bluebird": "^3.7.2",
+    "openapi-backend": "^5.9.1",
+    "pg-promise": "^11.4.3"
+  }
+}

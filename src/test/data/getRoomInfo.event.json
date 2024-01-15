@@ -1,0 +1,22 @@
+{
+  "resource": "/sif/v1/RoomInfos",
+  "path": "/sif/v1/RoomInfos",
+  "httpMethod": "GET",
+  "headers": {
+    "Authorization": "Bearer 123.12.1234",
+    "context-type": "application/json",
+    "contextId": "current",
+    "sourceName": "02248f5c-f496-454d-a54b-ee32baec887f",
+    "timestamp": "2022-12-01T11:04:56.125Z",
+    "zoneId": "urn:www.dec.nsw.gov.au:school:1001",
+    "requestAction": "QUERY",
+    "RequestId": "d85db0f7-f4b3-4c2b-a08d-ac1175b207cc",
+    "MessageId": "e66b3ca3-3269-42e0-94db-6bcb59091ac5"
+  },
+  "queryStringParameters": {
+    "navigationPage": "1",
+    "navigationPageSize": "100"
+  },
+  "isBase64Encoded": "false",
+  "body": null
+}

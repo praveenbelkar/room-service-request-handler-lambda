@@ -1,0 +1,41 @@
+{
+  "resource": "/sif/v3/RoomInfos/{RefId}",
+  "httpMethod": "PUT",
+  "path": "/sif/v3/RoomInfos/113f4c62-41f7-4675-8b52-3677fc9d0fae",
+  "headers": {
+    "Authorization": "Bearer 123.12.1234",
+    "context-type": "application/json",
+    "contextId": "current",
+    "x-baps-sourceName": "02248f5c-f496-454d-a54b-ee32baec887f",
+    "x-baps-partyName": "Sentral",
+    "x-baps-profiles": "02248f5c-f496-454d-a54b-ee32baec887f",
+    "sourceName": "02248f5c-f496-454d-a54b-ee32baec887f",
+    "timestamp": "2022-12-01T11:04:56.125Z",
+    "zoneId": "urn:www.dec.nsw.gov.au:school:1001",
+    "requestAction": "UPDATE",
+    "RequestId": "d85db0f7-f4b3-4c2b-a08d-ac1175b207cc",
+    "MessageId": "e66b3ca3-3269-42e0-94db-6bcb59091ac5"
+  },
+  "pathParameters":{"RefId":"113f4c62-41f7-4675-8b52-3677fc9d0fae"},
+  "body" : {
+    "RoomInfo": {
+      "RefId": "113f4c62-41f7-4675-8b52-3677fc9d0fae",
+      "SchoolInfoRefId": "e3e34b35-9d75-101a-8c3d-00aa001a1652",
+      "LocalId": "urn:ams:roomid:80936",
+      "RoomNumber": "OS 602 11763",
+      "AvailableForTimetable": "Y",
+      "SIF_ExtendedElements": {
+        "SIF_ExtendedElement": [
+          {
+            "Name": "Status",
+            "value": "A"
+          },
+          {
+            "Name": "Source",
+            "value": "V"
+          }
+        ]
+      }
+    }
+  }
+}

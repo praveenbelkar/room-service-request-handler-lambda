@@ -1,0 +1,13 @@
+.vscode/
+dist/
+scratch/
+/.idea/
+node_modules/
+coverage/
+
+.env
+.env.*
+event.json
+event_sources.json
+context.json
+deploy.env

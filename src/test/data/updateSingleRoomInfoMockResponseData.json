@@ -1,0 +1,15 @@
+{
+      "ref_id": "9355daf9-1597-4d7d-bf9b-046721e1860e",
+      "school_ref_id": "e3e34b35-9d75-101a-8c3d-00aa001a1652",
+      "local_id": "urn:ams:roomid:80937",
+      "room_code": "2118",
+      "short_description": "OS 602 11763",
+      "long_description" : "Classroom3",
+      "square_metres": 78,
+      "capacity": 29,
+      "room_type": "C",
+      "can_be_timetabled": "Y",
+      "status" : "A",
+      "source" : "V",
+      "room_type_description" : "Classroom"
+}

@@ -1,0 +1,32 @@
+[
+{
+      "ref_id": "D3E34B35-9D75-101A-8C3D-00AA001A1652",
+      "school_ref_id": "E3E34B35-9D75-101A-8C3D-00AA001A1652",
+      "local_id": "urn:ams:roomid:80936",
+      "room_code": "2118",
+      "short_description": "OS 602 11763",
+      "long_description" : "Classroom1",
+      "square_metres": 76,
+      "capacity": 29,
+      "room_type": "C",
+      "can_be_timetabled": "Y",
+      "status" : "A",
+      "source" : "V",
+      "room_type_description" : "Classroom"
+},
+{
+      "ref_id": "718ae52c-1483-4b48-81d8-794b13a1ca66",
+      "school_ref_id": "e3e34b35-9d75-101a-8c3d-00aa001a1652",
+      "local_id": "urn:ams:roomid:80936",
+      "room_code": "2118",
+      "short_description": "OS 602 11763",
+      "long_description" : "Classroom",
+      "square_metres": 76,
+      "capacity": 28,
+      "room_type": "C",
+      "can_be_timetabled": "Y",
+      "status" : "A",
+      "source" : "V",
+      "room_type_description" : "Classroom"
+}
+]

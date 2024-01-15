@@ -1,0 +1,40 @@
+{
+    "RefId": "{{{ref_id}}}",
+    "SchoolInfoRefId": "{{{school_ref_id}}}",
+    "LocalId": "{{{local_id}}}",
+    {{#if short_description}}
+    "RoomNumber": "{{{short_description}}}",
+    {{/if}}
+    {{#if long_description}}
+    "Description": "{{{long_description}}}",
+    {{/if}}
+    {{#if square_metres}}
+    "Size": {{{square_metres}}},
+    {{/if}}
+    {{#if capacity}}
+    "Capacity": {{{capacity}}},
+    {{/if}}
+    {{#if room_type}}
+    "RoomType": "{{{room_type}}}",
+    {{/if}}
+    "AvailableForTimetable": "{{{can_be_timetabled}}}",
+    "SIF_ExtendedElements" : {
+        "SIF_ExtendedElement": [
+            {
+                "Name" : "Status",
+                "value" : "{{{status}}}"
+            },
+            {
+                "Name" : "Source",
+                "value" : "{{{source}}}"
+            }
+            {{#if room_type_description}}
+            ,
+            {
+                "Name" : "RoomTypeDescription",
+                "value" : "{{{room_type_description}}}"
+            }
+            {{/if}}
+        ]
+    }
+}

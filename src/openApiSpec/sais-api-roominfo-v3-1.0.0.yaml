@@ -1,0 +1,1548 @@
+openapi: 3.0.3
+info:
+  version: v3.5.0
+  title: "SIF RoomInfo API V3.5.0"
+  description: Student Administration Integration Services (SAIS) - SIF AU derived API. Based on Systems Interoperability Framework™ SIF Implementation Specification (Australia) 3.5.0
+
+servers:
+  - url: https://api.integration.test.education.nsw.gov.au/{basePath}
+    description: TEST API server
+    variables:
+      basePath:
+        default: sif/v3
+  - url: https://api.integration.pre.education.nsw.gov.au/{basePath}
+    description: Pre Production API server
+    variables:
+      basePath:
+        default: sif/v3
+
+x-tagGroups:
+  - name: "SIF AU Student Baseline Profile (SBP) and supporting objects"
+    tags:
+      - "RoomInfo"
+tags:
+  - name: "RoomInfo"
+    description: >-
+      <p>This object contains all of the information about a school's room. This object may contain a reference to a room type so that it may represent anything from a gym, cafeteria, to a standard classroom.</p>
+
+paths:
+  # // RoomInfo Endpoints
+  /RoomInfos:
+    get:
+      tags:
+        - "RoomInfo"
+      summary: Default operation to get a list of all available RoomInfos
+      description: Default operation to get a list of all available RoomInfos
+      operationId: getRoomInfos
+      parameters:
+        - $ref: '#/components/parameters/authorization'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/requestType'
+        - $ref: '#/components/parameters/serviceType'
+        - $ref: '#/components/parameters/messageId'
+        - $ref: '#/components/parameters/requestId'
+        - $ref: '#/components/parameters/requestAction'
+      responses:
+        '200':
+          $ref: '#/components/responses/getRoomInfos'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+
+    post:
+      tags:
+        - "RoomInfo"
+      summary: Default operation to create multiple RoomInfos
+      description: Default operation to create multiple RoomInfos
+      operationId: creatRoomInfos
+      requestBody:
+        $ref: '#/components/requestBodies/createRoomInfos'
+      parameters:
+        - $ref: '#/components/parameters/authorization'
+        - $ref: '#/components/parameters/content-type'
+        - $ref: '#/components/parameters/content-profile'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/requestType'
+        - $ref: '#/components/parameters/serviceType'
+        - $ref: '#/components/parameters/messageId'
+        - $ref: '#/components/parameters/requestId'
+        - $ref: '#/components/parameters/requestAction'
+        - $ref: '#/components/parameters/messageType'
+      responses:
+        '200':
+          $ref: '#/components/responses/createRoomInfosQBE'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '415':
+          $ref: '#/components/responses/415'
+        '500':
+          $ref: '#/components/responses/500'
+
+    put:
+      tags:
+        - "RoomInfo"
+      summary: Default operation to update multiple RoomInfos
+      description: Default operation to update multiple RoomInfos
+      operationId: updateRoomInfos
+      requestBody:
+        $ref: '#/components/requestBodies/updateRoomInfos'
+      parameters:
+        - $ref: '#/components/parameters/authorization'
+        - $ref: '#/components/parameters/content-type'
+        - $ref: '#/components/parameters/content-profile'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/requestType'
+        - $ref: '#/components/parameters/serviceType'
+        - $ref: '#/components/parameters/messageId'
+        - $ref: '#/components/parameters/requestId'
+        - $ref: '#/components/parameters/requestAction'
+        - $ref: '#/components/parameters/messageType'
+      responses:
+        '200':
+          $ref: '#/components/responses/batchPutResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '415':
+          $ref: '#/components/responses/415'
+        '500':
+          $ref: '#/components/responses/500'
+
+  /RoomInfos/RoomInfo:
+    post:
+      tags:
+        - "RoomInfo"
+      summary: Default operation to create a single RoomInfo
+      description: Default operation to create a single RoomInfo
+      operationId: createRoomInfo
+      requestBody:
+        $ref: '#/components/requestBodies/createRoomInfo'
+      parameters:
+        - $ref: '#/components/parameters/authorization'
+        - $ref: '#/components/parameters/content-type'
+        - $ref: '#/components/parameters/content-profile'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/requestType'
+        - $ref: '#/components/parameters/serviceType'
+        - $ref: '#/components/parameters/messageId'
+        - $ref: '#/components/parameters/requestId'
+        - $ref: '#/components/parameters/requestAction'
+        - $ref: '#/components/parameters/messageType'
+      responses:
+        '201':
+          $ref: '#/components/responses/createRoomInfo'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '409':
+          $ref: '#/components/responses/409'
+        '415':
+          $ref: '#/components/responses/415'
+        '500':
+          $ref: '#/components/responses/500'
+
+  /sif/v3/RoomInfos/{RefId}:
+    get:
+      tags:
+        - "RoomInfo"
+      summary: Default operation to get a single RoomInfo
+      description: Default operation to get a single RoomInfo
+      operationId: getRoomInfo
+      parameters:
+        - name: RefId
+          in: path
+          description: <p>The GUID that uniquely identifies a particular room.</p>
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/authorization'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/requestType'
+        - $ref: '#/components/parameters/serviceType'
+        - $ref: '#/components/parameters/messageId'
+        - $ref: '#/components/parameters/requestId'
+        - $ref: '#/components/parameters/requestAction'
+      responses:
+        '200':
+          $ref: '#/components/responses/getRoomInfo'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+
+    put:
+      tags:
+        - "RoomInfo"
+      summary: Default operation to update a single RoomInfo
+      description: Default operation to update a single RoomInfo
+      operationId: updatRoomInfo
+      parameters:
+        - name: RefId
+          in: path
+          description: <p>The GUID that uniquely identifies a particular room.</p>
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/authorization'
+        - $ref: '#/components/parameters/content-type'
+        - $ref: '#/components/parameters/content-profile'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/requestType'
+        - $ref: '#/components/parameters/serviceType'
+        - $ref: '#/components/parameters/messageId'
+        - $ref: '#/components/parameters/requestId'
+        - $ref: '#/components/parameters/requestAction'
+        - $ref: '#/components/parameters/messageType'
+      requestBody:
+        $ref: '#/components/requestBodies/updateRoomInfo'
+      responses:
+        '200':
+          $ref: '#/components/responses/updateRoomInfo'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '415':
+          $ref: '#/components/responses/415'
+        '500':
+          $ref: '#/components/responses/500'
+
+components:
+  # Schemas
+  schemas:
+
+    # Error objects
+    error:
+      required:
+        - "code"
+        - "message"
+        - "scope"
+      type: object
+      description: >-
+      $ref: '#/components/schemas/errorCommon'
+
+    errorCommon:
+      required:
+        - "code"
+        - "message"
+        - "scope"
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: integer
+          description: >-
+            <p>Corresponds to the value contained in the HTTPS Header Status-Code" field in which the Error Object is the payload.</p>
+        scope:
+          type: string
+          description: >-
+            <p>Attempted operation. Ex: "Get RoomInfo"</p>
+        message:
+          type: string
+          description: >-
+            <p>A simple, easy to understand, compact description of the error. The primary consumer of this message is the application user. Example: "Unable to get RoomInfo."</p>
+        description:
+          type: string
+          description: >-
+            <p>An optional error description that is more complete and technical in nature. It is to be used as a diagnostic message in trouble-shooting procedures. "</p>
+
+    # Response Objects
+
+    getSchemaRoomInfo:
+      properties:
+        RoomInfo:
+          type: object
+          description: >-
+            Payload definition for RoomInfo
+          $ref: '#/components/schemas/RoomInfo'
+
+    getSchemaRoomInfos:
+      properties:
+        RoomInfos:
+          type: object
+          description: >-
+            A Collection of RoomInfo objects
+          properties:
+            RoomInfo:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoomInfo'
+
+    createSchemaRoomInfo:
+      required:
+        - "RoomInfo"
+      properties:
+        RoomInfo:
+          type: object
+          description: >-
+            Payload definition for RoomInfo
+          $ref: '#/components/schemas/RoomInfo'
+
+    createSchemaRoomInfos:
+      required:
+        - "RoomInfos"
+      properties:
+        RoomInfos:
+          type: object
+          description: >-
+            A Collection of RoomInfo objects
+          $ref: '#/components/schemas/RoomInfoCollection'
+
+    RoomInfoCollection:
+      type: object
+      required:
+        - "RoomInfo"
+      properties:
+        RoomInfo:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/RoomInfo'
+
+    RoomInfo:
+      required:
+        - "RefId"
+        - "LocalId"
+        - "SchoolInfoRefId"
+        - "RoomNumber"
+        - "AvailableForTimetable"
+      type: object
+      properties:
+        RefId:
+          type: string
+          description: >-
+            <p>The GUID that identifies this room.</p>
+          $ref: '#/components/schemas/GUID'
+        SchoolInfoRefId:
+          type: string
+          description: >-
+            <p>GUID that identifies the school that this room belongs to.</p>
+          $ref: '#/components/schemas/GUID'
+        LocalId:
+          type: string
+          description: >-
+            <p>The locally-assigned identifier for this room.</p>
+          $ref: '#/components/schemas/LocalId'
+        RoomNumber:
+          type: string
+          minLength: 1
+          description: >-
+            <p>Room number as presented to the user/application. It is intended to be human readable and user-friendly corresponding to the physical label of the Room.</p>
+        Description:
+          type: string
+          description: >-
+            <p> Friendly name that can be assigned to the room (e.g. <code>Staff Cafeteria</code>). </p>
+        Size:
+          type: number
+          description: >-
+            <p>Size in square meters.</p>
+        Capacity:
+          type: integer
+          description: >-
+            <p>Number of persons (usually students) that this room can hold.</p>
+        RoomType:
+          type: string
+          description: >-
+            <p>Type of room, for use in timetabling. Must be one of AV,C,CC,CLASSROOM,CLS,CR,DARK,DRA,FIT,FOOD,GRA,GYM,HALL,LANG,LIB,MEETING,MET,MM,MUS,OLA,PER,POOL,PRACTICAL,READ,SCI,SEM,SP,SR,SS,STU,TECH,TEX,TLS,TR,WOOD,WORK,WWMW,O</p>
+          oneOf:
+            - enum: [ "AD" ]
+              title: AD
+            - enum: [ "ART" ]
+              title: ART
+            - enum: [ "AV" ]
+              title: AV
+            - enum: [ "C" ]
+              title: C
+            - enum: [ "CC" ]
+              title: CC
+            - enum: [ "CLASSROOM" ]
+              title: CLASSROOM
+            - enum: [ "CLS" ]
+              title: CLS
+            - enum: [ "CR" ]
+              title: CR
+            - enum: [ "DARK" ]
+              title: DARK
+            - enum: [ "DRA" ]
+              title: DRA
+            - enum: [ "FIT" ]
+              title: FIT
+            - enum: [ "FOOD" ]
+              title: FOOD
+            - enum: [ "GRA" ]
+              title: GRA
+            - enum: [ "GYM" ]
+              title: GYM
+            - enum: [ "HALL" ]
+              title: HALL
+            - enum: [ "LANG" ]
+              title: LANG
+            - enum: [ "LIB" ]
+              title: LIB
+            - enum: [ "MEETING" ]
+              title: MEETING
+            - enum: [ "MET" ]
+              title: MET
+            - enum: [ "MM" ]
+              title: MM
+            - enum: [ "MUS" ]
+              title: MUS
+            - enum: [ "OLA" ]
+              title: OLA
+            - enum: [ "PER" ]
+              title: PER
+            - enum: [ "POOL" ]
+              title: POOL
+            - enum: [ "PRACTICAL" ]
+              title: PRACTICAL
+            - enum: [ "READ" ]
+              title: READ
+            - enum: [ "SCI" ]
+              title: SCI
+            - enum: [ "SEM" ]
+              title: SEM
+            - enum: [ "SP" ]
+              title: SP
+            - enum: [ "SR" ]
+              title: SR
+            - enum: [ "SS" ]
+              title: SS
+            - enum: [ "STU" ]
+              title: STU
+            - enum: [ "TECH" ]
+              title: TECH
+            - enum: [ "TEX" ]
+              title: TEX
+            - enum: [ "TLS" ]
+              title: TLS
+            - enum: [ "TR" ]
+              title: TR
+            - enum: [ "WOOD" ]
+              title: WOOD
+            - enum: [ "WORK" ]
+              title: WORK
+            - enum: [ "WWMW" ]
+              title: WWMW
+            - enum: [ "O" ]
+              title: O
+        AvailableForTimetable:
+          type: string
+          description: >-
+            <p>Is this Room available to be Timetabled?</p>
+            <ul>
+                <li>'N' - No</li>
+                <li>'U' - Unknown</li>
+                <li>'X' - Not Provided</li>
+                <li>'Y' - Yes</li>
+            </ul>
+          $ref: '#/components/schemas/AUCodeSetsYesOrNoCategory'
+        SIF_ExtendedElements:
+          type: object
+          $ref: '#/components/schemas/SIF_ExtendedElements'
+
+    createMultiSchema:
+      properties:
+        createResponse:
+          $ref: '#/components/schemas/createResponse'
+
+    createResponse:
+      required:
+        - "creates"
+      type: object
+      properties:
+        creates:
+          type: object
+          $ref: '#/components/schemas/creates'
+      description: >-
+        <p>An HTTP Response with a status of 200 and a payload consisting of a single "createResponse" element. This includes, for each requested object successfully created, an internal status of 201 and the service-assigned refId. Any requested object that failed to be created is indicated by an error statusCode and a corresponding error payload.</p>
+
+    creates:
+      type: object
+      required:
+        - "create"
+      properties:
+        create:
+          type: array
+          items:
+            $ref: '#/components/schemas/create'
+
+    create:
+      type: object
+      properties:
+        id:
+          type: string
+          xml:
+            attribute: true
+        statusCode:
+          type: string
+          pattern: '^[24-5][0-9]{2}$'
+          xml:
+            attribute: true
+        error:
+          type: object
+          $ref: '#/components/schemas/errorCommon'
+
+    updateSchemaRoomInfo:
+      required:
+        - "RoomInfo"
+      properties:
+        RoomInfo:
+          type: object
+          description: >-
+            Payload definition for RoomInfo
+          $ref: '#/components/schemas/RoomInfo'
+
+    updateSchemaRoomInfos:
+      required:
+        - "RoomInfos"
+      properties:
+        RoomInfos:
+          type: object
+          description: >-
+            A Collection of RoomInfo objects
+          $ref: '#/components/schemas/RoomInfoCollection'
+
+    updateMultiSchema:
+      properties:
+        updateResponse:
+          $ref: '#/components/schemas/updateResponse'
+
+    updateResponse:
+      required:
+        - "updates"
+      type: object
+      properties:
+        updates:
+          type: object
+          $ref: '#/components/schemas/updates'
+      description: >-
+        <p>An HTTP Response with a status of 200 (success) and a location corresponding to the URL of the first successfully modified object. It contains a payload consisting of a single "updateResponse" element.</p>
+
+    updates:
+      type: object
+      required:
+        - "update"
+      properties:
+        update:
+          type: array
+          items:
+            $ref: '#/components/schemas/update'
+
+    update:
+      type: object
+      properties:
+        id:
+          type: string
+          xml:
+            attribute: true
+        statusCode:
+          type: string
+          pattern: '^[24-5][0-9]{2}$'
+          xml:
+            attribute: true
+        error:
+          type: object
+          $ref: '#/components/schemas/errorCommon'
+
+    # Common data models
+    RefId:
+      $ref: '#/components/schemas/GUID'
+      description: >-
+        An object or element identifier.
+
+    LocalId:
+      description: >-
+        <p> This is a common element used to define the locally assigned identifier associated with an entity. </p>
+      type: string
+      minLength: 1
+
+    GUID:
+      description: >-
+        SIF format for a GUID. 3.x - xs:pattern value="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+      type: string
+      pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
+    AUCodeSetsYesOrNoCategory:
+      type: string
+      title: Yes Or No Category
+      description: >-
+        <p></p>
+        <ul>
+          <li>'N' - No</li>
+          <li>'U' - Unknown</li>
+          <li>'X' - Not Provided</li>
+          <li>'Y' - Yes</li>
+        </ul>
+      oneOf:
+        - enum: [ "N" ]
+          title: No
+        - enum: [ "U" ]
+          title: Unknown
+        - enum: [ "X" ]
+          title: Not Provided
+        - enum: [ "Y" ]
+          title: Yes
+
+    SIF_ExtendedElements:
+      description: >-
+        <p>Allows an agent to include data not yet defined within a SIF data object as name/value pairs.</p>
+        <p>The following extended elements are permitted<p>
+        <ul>
+            <li>Status - values 'A' or 'I' - Mandatory</li>
+            <li>Source - values 'A', 'E' or 'V' - Mandatory</li>
+            <li>RoomTypeDescription - free text room type description.</li>
+        </ul>
+      type: object
+      properties:
+        SIF_ExtendedElement:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/ExtendedContent'
+    ExtendedContent:
+      type: object
+      description: >-
+        object as name/value pairs
+
+  # Responses
+  responses:
+
+    # 200 responses
+    getRoomInfo:
+      description: Payload for RoomInfo
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getSchemaRoomInfo'
+          examples:
+            getPESC:
+              $ref: '#/components/examples/RoomInfo'
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+
+
+    getRoomInfos:
+      description: Payload for RoomInfos
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getSchemaRoomInfos'
+          examples:
+            getPESC:
+              $ref:  '#/components/examples/RoomInfos'
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+
+    createRoomInfo:
+      description: Payload for RoomInfo
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createSchemaRoomInfo'
+          examples:
+            createPESC:
+              $ref: '#/components/examples/createRoomInfo'
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+
+
+    createRoomInfos:
+      description: Payload for RoomInfos
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createSchemaRoomInfos'
+          examples:
+            createPESC:
+              $ref:  '#/components/examples/RoomInfos'
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+
+    #Error responses
+
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/error'
+          examples:
+            pesc:
+              summary: PESC notation
+              value:
+                error:
+                  id: 5b72f2d4-7a83-4297-a71f-8b5fb26cbf14
+                  code: 400
+                  scope: Provider
+                  message: Bad Request
+                  description: Omission of a mandatory request header parameters
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+    '401':
+      description: Authorisation failed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/error'
+          examples:
+            pesc:
+              summary: PESC notation
+              value:
+                error:
+                  id: 5b72f2d4-7a83-4297-a71f-8b5fb26cbf14
+                  code: 401
+                  scope: Provider
+                  message: Authorisation failed.
+                  description: Invalid or missing 'Authorization' HTTP Header.
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/error'
+          examples:
+            pesc:
+              summary: PESC notation
+              value:
+                error:
+                  id: 5b72f2d4-7a83-4297-a71f-8b5fb26cbf14
+                  code: 403
+                  scope: Provider
+                  message: Forbidden
+                  description: This operation is not enabled for consumer.
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/error'
+          examples:
+            pesc:
+              summary: PESC notation
+              value:
+                error:
+                  id: 5b72f2d4-7a83-4297-a71f-8b5fb26cbf14
+                  code: 404
+                  scope: Provider
+                  message: Not Found
+                  description: Object ID does not correspond to an existing object. No Service Provider has been found to match the parameters (Zone, RefId) in the Request.
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+
+    '409':
+      description: State Conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/errorCommon'
+          examples:
+            pesc:
+              summary: PESC notation
+              value:
+                error:
+                  id: 5b72f2d4-7a83-4297-a71f-8b5fb26cbf14
+                  code: 409
+                  scope: 'sif/v3/RoomInfos'
+                  message: State Conflict
+                  description: An attempt has been made to create an existing object.
+      headers:
+        content-type:
+          $ref: '#/components/headers/content-type'
+        content-encoding:
+          $ref: '#/components/headers/content-encoding'
+        content-profile:
+          $ref: '#/components/headers/content-profile'
+        messageId:
+          $ref: '#/components/headers/messageId'
+        messageType:
+          $ref: '#/components/headers/messageType'
+        requestId:
+          $ref: '#/components/headers/requestId'
+        responseAction:
+          $ref: '#/components/headers/responseAction'
+        serviceType:
+          $ref: '#/components/headers/serviceType'
+        timestamp:
+          $ref: '#/components/headers/timestamp'
+        vary:
+          $ref: '#/components/headers/vary'
+
+    '415':
+      description: Unsupported Media Type
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/errorCommon'
+          examples:
+            pesc:
+              summary: PESC notation
+              value:
+                error:
+                  id: 5b72f2d4-7a83-4297-a71f-8b5fb26cbf14
+                  code: 415
+                  scope: 'sif/v3/RoomInfos'
+                  message: Unsupported Media Type
+                  description: The request entity has a media type which the server does not support. server only supports application/json.
+
+
+    '500':
+      description: Internal Service Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/error'
+          examples:
+            pesc:
+              summary: PESC notation
+              value:
+                error:
+                  id: 5b72f2d4-7a83-4297-a71f-8b5fb26cbf14
+                  code: 500
+                  scope: Provider
+                  message: Internal Service Error
+                  description: An unexpected error occurred in servicing the Request.
+      headers:
+        'content-type':
+          $ref: '#/components/headers/content-type'
+        'content-encoding':
+          $ref: '#/components/headers/content-encoding'
+        'content-profile':
+          $ref: '#/components/headers/content-profile'
+        'messageId':
+          $ref: '#/components/headers/messageId'
+        'messageType':
+          $ref: '#/components/headers/messageType'
+        'requestId':
+          $ref: '#/components/headers/requestId'
+        'responseAction':
+          $ref: '#/components/headers/responseAction'
+        'serviceType':
+          $ref: '#/components/headers/serviceType'
+        'timestamp':
+          $ref: '#/components/headers/timestamp'
+        'vary':
+          $ref: '#/components/headers/vary'
+
+    createRoomInfosQBE:
+      description: Payload for Multiple POST request for RoomInfos
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createMultiSchema'
+          examples:
+            qbePESC:
+              $ref: '#/components/examples/createMultiExamples'
+      headers:
+        content-type:
+          $ref: '#/components/headers/content-type'
+        content-profile:
+          $ref: '#/components/headers/content-profile'
+        messageId:
+          $ref: '#/components/headers/messageId'
+        messageType:
+          $ref: '#/components/headers/messageType'
+        requestId:
+          $ref: '#/components/headers/requestId'
+        responseAction:
+          $ref: '#/components/headers/responseAction'
+        serviceType:
+          $ref: '#/components/headers/serviceType'
+        timestamp:
+          $ref: '#/components/headers/timestamp'
+        vary:
+          $ref: '#/components/headers/vary'
+
+
+    batchPutResponse:
+      description: Response to Batch Update
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateMultiSchema'
+          examples:
+            pescUpdate:
+              $ref: '#/components/examples/updateMultiExamples'
+
+    updateRoomInfo:
+      description: Payload for RoomInfo
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateSchemaRoomInfo'
+          examples:
+            updatePESC:
+              $ref: '#/components/examples/updateRoomInfo'
+      headers:
+        content-type:
+          $ref: '#/components/headers/content-type'
+        content-encoding:
+          $ref: '#/components/headers/content-encoding'
+        content-profile:
+          $ref: '#/components/headers/content-profile'
+        messageId:
+          $ref: '#/components/headers/messageId'
+        messageType:
+          $ref: '#/components/headers/messageType'
+        requestId:
+          $ref: '#/components/headers/requestId'
+        responseAction:
+          $ref: '#/components/headers/responseAction'
+        serviceType:
+          $ref: '#/components/headers/serviceType'
+        timestamp:
+          $ref: '#/components/headers/timestamp'
+        vary:
+          $ref: '#/components/headers/vary'
+  # Parameters
+  parameters:
+    #Request header parameters
+    authorization:
+      name: authorization
+      in: header
+      description: >-
+        Authorization header. BAPS OAuth 2.0 token
+      required: true
+      schema:
+        type: string
+    requestType:
+      name: requestType
+      in: header
+      description: >-
+        Must be IMMEDIATE. If not set, it defaults to IMMEDIATE.
+      required: false
+      schema:
+        type: string
+      example: IMMEDIATE
+    content-type:
+      name: content-type
+      in: header
+      description: >-
+        Tells the receiver the mime type of the payload body. Must be application/json
+      required: false
+      schema:
+        type: string
+      example: application/json
+    messageId:
+      name: messageId
+      in: header
+      description: >-
+        UUID that uniquely identifies the message that carries it.
+      required: false
+      schema:
+        type: string
+      example: e66b3ca3-3269-42e0-94db-6bcb59091ac5
+    messageType:
+      name: messageType
+      in: header
+      description: >-
+        One of: EVENT/REQUEST/RESPONSE/ERROR. If not provided, it will default to REQUEST.
+      required: false
+      schema:
+        type: string
+    requestId:
+      name: requestId
+      in: header
+      description: >-
+        A Consumer specified 'token' that uniquely identifies every delayed Request issued by the Consumer. It could be as simple as a monotonically increasing integer. Used to correlate the delayed (asynchronous) Response with the original Request. It could be as simple as a monotonically increasing integer.
+      required: false
+      schema:
+        type: string
+      example: d85db0f7-f4b3-4c2b-a08d-ac1175b207cc
+    requestAction:
+      name: requestAction
+      in: header
+      description: >-
+        Indicates what the request is trying to do. Valid values for each HTTP operations are: POST=CREATE, PUT=UPDATE, DELETE=DELETE, GET=QUERY, HEAD=HEAD.
+      required: false
+      schema:
+        type: string
+      example: QUERY
+    serviceType:
+      name: serviceType
+      in: header
+      description: >-
+        Must be OBJECT. If not provided, it will default to OBJECT
+      required: false
+      example: OBJECT
+      schema:
+        type: string
+    timestamp:
+      name: timestamp
+      in: header
+      description: >-
+        Date and Time of message creation (in ISO-8601). If not need for authentication, may be omitted in the request. If needed, only for requests this value may be provided as a URL query parameter instead of a header.
+      required: false
+      schema:
+        type: string
+      example: 2022-12-03T07:14:34.105Z
+    zoneId:
+      name: zoneId
+      in: header
+      description: >-
+        zoneId is the ID of a SIF zone which corresponds to a school in SIF Services. It informs SIF Services to limit operations on SIF objects to the identified school.
+      required: true
+      schema:
+        type: string
+      example: urn:www.dec.nsw.gov.au:school:9999
+    accept-encoding:
+      name: accept-encoding
+      in: header
+      description: >-
+        Indicate what payload encoding is accepted in the response. Valid values are: identity (not compressed) or gzip (compressed).
+      required: false
+      schema:
+        type: string
+    content-profile:
+      name: content-profile
+      in: header
+      description: >-
+        Used to indicate the data model schema used in the payload. Example: urn:sif:data/au/3.5.0. Indicates SIF AU v3.5.0 is used.
+      required: false
+      schema:
+        type: string
+      example: urn:sif:data/au/3.5.0
+
+  # Headers
+  headers:
+    # Response Header Parameters
+    content-type:
+      schema:
+        type: string
+      description: >-
+        Mime type of response body. Example: application/json
+    content-profile:
+      schema:
+        type: string
+      description: >-
+        Optional: Used to indicate the data model schema used in the payload. Example: urn:sif:data/au/3.5.0. Indicates SIF AU v3.5.0 is used.
+      example : urn:sif:data/au/3.5.0
+    content-encoding:
+      schema:
+        type: string
+      description: >-
+        Indicate the payload encoding. Valid values are: identity or gzip based on accept-encoding in request header
+      example : gzip
+    messageId:
+      schema:
+        type: string
+      description: >-
+        Required: UUID that uniquely identifies the message that carries it.
+      example: e44a16f5-256f-4d5a-9ae1-dc0e946385ce
+    messageType:
+      schema:
+        type: string
+      description: >-
+        Required: One of: RESPONSE or ERROR. If returned HTTP status code is higher than 300 it is expected to be ERROR otherwise RESPONSE.
+    requestId:
+      schema:
+        type: string
+      description: >-
+        Required for DELAYED responses. Used to correlate the delayed (asynchronous) Response with the original Request
+      example: d85db0f7-f4b3-4c2b-a08d-ac1175b207cc
+    responseAction:
+      schema:
+        type: string
+      description: >-
+        Required: This must exactly match the requestAction value contained in the HTTP header of the Request being responded to. Valid values are: CREATE, UPDATE, DELETE, QUERY or HEAD
+      example: QUERY
+    serviceType:
+      schema:
+        type: string
+      description: >-
+        Optional: Indicates the service type of the response. Valid values are UTILITY, OBJECT, FUNCTIONAL, SERVICEPATH, XQUERYTEMPLATE, SERVICE. Default: OBJECT.
+      example: OBJECT
+    timestamp:
+      schema:
+        type: string
+      description: >-
+        Required: Date / Time of message creation (in ISO-8601 format which is also used as the basis of xs:dateTime).
+      example: 2022-12-03T07:14:54.125Z
+    vary:
+      schema:
+        type: string
+      description: >-
+        Optional: This HTTP Header can be set by the provider to indicate that it supports compression. It would only be set by the endpoint provider if the caller request uses uncompressed payloads. It would indicate to the caller that the provide could deal with compression. In such a case the HTTP header 'vary' would take the following value: vary: Accept-Encoding
+      example : Accept-Encoding
+
+
+  requestBodies:
+
+    createRoomInfo:
+      description: Payload for RoomInfo Create Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createSchemaRoomInfo'
+          examples:
+            createPESC:
+              $ref: '#/components/examples/createRoomInfo'
+
+    createRoomInfos:
+      description: Payload for RoomInfos Create Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createSchemaRoomInfos'
+          examples:
+            createPESC:
+              $ref: '#/components/examples/createRoomInfos'
+
+
+    updateRoomInfo:
+      description: Payload for RoomInfo Update Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateSchemaRoomInfo'
+          examples:
+            updatePESC:
+              $ref: '#/components/examples/updateRoomInfo'
+
+    updateRoomInfos:
+      description: Payload for RoomInfos Update Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateSchemaRoomInfos'
+          examples:
+            updatePESC:
+              $ref: '#/components/examples/updateRoomInfos'
+
+  # SecuritySchemes
+  securitySchemes:
+    oAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /oauth2/token
+          scopes:
+            api://baps-v1/.default: default scope
+
+  # Examples
+  examples:
+
+    RoomInfo:
+      summary: PESC notation for RoomInfo query Response
+      value:
+        RoomInfo:
+          RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1652"
+          SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1652"
+          LocalId: "urn:ams:roomid:80936"
+          RoomNumber: "OS 602 11763"
+          Description: "Classroom"
+          Size: 76
+          Capacity: 28
+          RoomType: "C"
+          AvailableForTimetable: "Y"
+          SIF_ExtendedElements:
+            SIF_ExtendedElement:
+              - Name: "Status"
+                Value: "A"
+              - Name: "Source"
+                Value: "V"
+              - Name: "RoomTypeDescription"
+                Value: "Classroom"
+
+    RoomInfos:
+      summary: PESC notation for RoomInfoS query Response
+      value:
+        RoomInfos:
+          RoomInfo:
+            - RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1652"
+              SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1652"
+              LocalId: "urn:ams:roomid:80936"
+              RoomNumber: "OS 602 11763"
+              Description: "Classroom"
+              Size: 76
+              Capacity: 28
+              RoomType: "C"
+              AvailableForTimetable: "Y"
+              SIF_ExtendedElements:
+                SIF_ExtendedElement:
+                  - Name: "Status"
+                    Value: "A"
+                  - Name: "Source"
+                    Value: "V"
+                  - Name: "RoomTypeDescription"
+                    Value: "Classroom"
+
+    createRoomInfo:
+      summary: PESC notation for RoomInfo create Request/Response
+      value:
+        RoomInfo:
+          RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1652"
+          SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1652"
+          LocalId: "urn:ams:roomid:80936"
+          RoomNumber: "OS 602 11763"
+          Description: "Classroom"
+          Size: 76
+          Capacity: 28
+          RoomType: "C"
+          AvailableForTimetable: "Y"
+          SIF_ExtendedElements:
+            SIF_ExtendedElement:
+              - Name: "Status"
+                Value: "A"
+              - Name: "Source"
+                Value: "V"
+              - Name: "RoomTypeDescription"
+                Value: "Classroom"
+
+    createRoomInfos:
+      summary: PESC notation for RoomInfos create request
+      value:
+        RoomInfos:
+          RoomInfo:
+            - RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1652"
+              SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1652"
+              LocalId: "urn:ams:roomid:80936"
+              RoomNumber: "OS 602 11763"
+              Description: "Classroom"
+              Size: 76
+              Capacity: 28
+              RoomType: "C"
+              AvailableForTimetable: "Y"
+              SIF_ExtendedElements:
+                SIF_ExtendedElement:
+                  - Name: "Status"
+                    Value: "A"
+                  - Name: "Source"
+                    Value: "V"
+                  - Name: "RoomTypeDescription"
+                    Value: "Classroom"
+            - RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1653"
+              SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1653"
+              LocalId: "urn:ams:roomid:80937"
+              RoomNumber: "OS 602 11764"
+              Description: "Science Lab"
+              Size: 80
+              Capacity: 30
+              RoomType: "C"
+              AvailableForTimetable: "Y"
+              SIF_ExtendedElements:
+                SIF_ExtendedElement:
+                  - Name: "Status"
+                    Value: "A"
+                  - Name: "Source"
+                    Value: "E"
+                  - Name: "RoomTypeDescription"
+                    Value: "Classroom"
+
+
+    updateRoomInfo:
+      summary: PESC notation for RoomInfos update request/response
+      value:
+        RoomInfo:
+          RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1652"
+          SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1652"
+          LocalId: "urn:ams:roomid:80936"
+          RoomNumber: "OS 602 11763"
+          Description: "Classroom"
+          Size: 76
+          Capacity: 28
+          RoomType: "C"
+          AvailableForTimetable: "Y"
+          SIF_ExtendedElements:
+            SIF_ExtendedElement:
+              - Name: "Status"
+                Value: "A"
+              - Name: "Source"
+                Value: "V"
+              - Name: "RoomTypeDescription"
+                Value: "Classroom"
+
+    updateRoomInfos:
+      summary: PESC notation for RoomInfos update Request
+      value:
+        RoomInfos:
+          RoomInfo:
+            - RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1652"
+              SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1652"
+              LocalId: "urn:ams:roomid:80936"
+              RoomNumber: "OS 602 11763"
+              Description: "Classroom"
+              Size: 76
+              Capacity: 28
+              RoomType: "C"
+              AvailableForTimetable: "Y"
+              SIF_ExtendedElements:
+                SIF_ExtendedElement:
+                  - Name: "Status"
+                    Value: "A"
+                  - Name: "Source"
+                    Value: "V"
+                  - Name: "RoomTypeDescription"
+                    Value: "Classroom"
+            - RefId: "D3E34B35-9D75-101A-8C3D-00AA001A1653"
+              SchoolInfoRefId: "E3E34B35-9D75-101A-8C3D-00AA001A1653"
+              LocalId: "urn:ams:roomid:80937"
+              RoomNumber: "OS 602 11764"
+              Description: "Science Lab"
+              Size: 80
+              Capacity: 30
+              RoomType: "C"
+              AvailableForTimetable: "Y"
+              SIF_ExtendedElements:
+                SIF_ExtendedElement:
+                  - Name: "Status"
+                    Value: "A"
+                  - Name: "Source"
+                    Value: "E"
+                  - Name: "RoomTypeDescription"
+                    Value: "Classroom"
+
+    createMultiExamples:
+      summary: PESC - Batch Create Response
+      value:
+        createResponse:
+          creates:
+            create:
+              - id: D3E34B35-9D75-101A-8C3D-00AA001A1652
+                statusCode: '201'
+              - id: D3E34B35-9D75-101A-8C3D-00AA001A1653
+                statusCode: '400'
+                error:
+                  id: 6f789e1c-dfe7-4c18-8ef0-d907b81ea61e
+                  code: 400
+                  scope: 'sif/v3/RoomInfos'
+                  message: Bad Request.
+
+    updateMultiExamples:
+      summary: PESC - Batch Update Response
+      value:
+        updateResponse:
+          updates:
+            update:
+              - id: D3E34B35-9D75-101A-8C3D-00AA001A1652
+                statusCode: '200'
+              - id: D3E34B35-9D75-101A-8C3D-00AA001A1653
+                statusCode: '404'
+                error:
+                  id: 657e6bf8-c739-4007-8459-3e8d38af44a0
+                  code: 404
+                  scope: 'sif/v3/RoomInfos'
+                  message: Data for the given ID does not exist.
+
+
+
+security:
+  - oAuth2ClientCredentials: ['api://baps-v1/.default']
+
+
+
